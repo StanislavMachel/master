@@ -11,21 +11,46 @@
     <meta name="viewport" content="width=device-width" />
     <title>RsvpForm</title>
     <link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
 </head>
 <body>
-    @using (Html.BeginForm())
-    {
-        @Html.ValidationSummary() @*show validation summary*@
-        <p>Your name: @Html.TextBoxFor(x => x.Name)</p>
-        <p>Your email: @Html.TextBoxFor(x => x.Email)</p>
-        <p>Your phone: @Html.TextBoxFor(x => x.Phone)</p>
-        <p>Will you attend?
-            @Html.DropDownListFor(x => x.WillAttend, new[] {
-                new SelectListItem() {Text = "Yes", Value = Boolean.TrueString },
-                new SelectListItem() {Text = "No", Value = Boolean.FalseString }
-            })
-        </p>
-        <input type="submit" value="Send form" />
-    }
+    <div class="text-success">
+        <div class="panel-heading text-center">
+            <h4>RSVP form</h4>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary() @*show validation summary*@
+                <div class="form-group">
+                    <label>Your name:</label>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Your email:</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Your phone:</label>
+                    Your phone: @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Will you attend?</label>
+                    @Html.DropDownListFor(x => x.WillAttend, new[] {
+                        new SelectListItem() {Text = "Yes", Value = Boolean.TrueString },
+                        new SelectListItem() {Text = "No", Value = Boolean.FalseString }
+                    }, "Select answer", new { @class = "form-control" })
+                </div>
+
+
+
+                <div class="text-center">
+                    <input type="submit" value="Send form" class="btn btn-success"/>
+                </div>
+                
+            }
+        </div>
+    </div>
 </body>
 </html>
