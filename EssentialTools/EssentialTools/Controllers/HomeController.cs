@@ -17,7 +17,7 @@ namespace EssentialTools.Controllers
             new Product {Name = "Salat", Category = "Snack", Price = 5.50M},
         };
 
-        public HomeController(IValueCalculator calcParam)
+        public HomeController(IValueCalculator calcParam, IValueCalculator calc2)
         {
             calc = calcParam;
         }
